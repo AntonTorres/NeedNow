@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 //Requerimos todos los controladores de los usuarios.
 const {
@@ -41,6 +42,7 @@ const { PORT } = process.env;
 
 app.use(express.json());
 app.use(fileUpload());
+app.use(cors());
 
 //Endpoints usuarios
 app.post("/users", postUser);
@@ -51,7 +53,7 @@ app.put("/users/:id", validateR, putUser);
 app.delete("/users/:id", validateR, deleteUser);
 
 //Endpoints services
-app.get("/services", getServices);
+app.get("/", getServices);
 app.get("/services/:id", getService);
 app.post("/services", validateR, postService);
 app.delete("/services/:id", validateR, deleteService);

@@ -7,6 +7,8 @@ const validateR = (req, res, next) => {
 
     const [type, token] = authorization.split(" ");
 
+    console.info(token);
+
     if (type !== "Bearer" || !token) {
       generateError("Formato de token no válido.", 400);
     }
@@ -22,3 +24,5 @@ const validateR = (req, res, next) => {
 };
 
 module.exports = validateR;
+
+

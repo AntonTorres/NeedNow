@@ -10,7 +10,7 @@ const loginUser = async (req, res, next) => {
     const user = await selectUserByEmail(email);
 
     if (!user) {
-      generateError("Email o contraseña incorrectos.", 400);
+      generateError("Ese email no está registrado.", 400);
     }
 
     const isPassOk = await bcrypt.compare(password, user.password);
@@ -25,7 +25,7 @@ const loginUser = async (req, res, next) => {
       expiresIn: "30d",
     });
 
-    res.status(200).send({ status: "ok", data: { token } });
+    res.status(200).send({ status: "ok", data: { token, user } });
   } catch (error) {
     next(error);
   }

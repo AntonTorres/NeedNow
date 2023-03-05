@@ -20,12 +20,12 @@ const postService = async (req, res, next) => {
       resolve,
     });
 
-    let fileName = null;
+    /* let fileName = null;
     if (req.files && req.files.files) {
       const file = req.files.files;
       fileName = await processAndSave(file.data);
       insertedFileId = await insertServiceFile(fileName, insertedServiceId);
-    }
+    } */
 
     res.status(201).send({
       status: "ok",
@@ -34,7 +34,6 @@ const postService = async (req, res, next) => {
         tittle,
         description,
         userId,
-        files: insertedFileId,
         resolve,
       },
     });
