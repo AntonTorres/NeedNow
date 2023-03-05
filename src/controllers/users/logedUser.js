@@ -12,7 +12,7 @@ const logedUser = async (req, res, next) => {
       expiresIn: "30d",
     });
 
-    res.status(200).send({ status: "ok", data: token, user });
+    res.status(200).send({ status: "ok", data: { token, user } });
   } catch (error) {
     next(error);
   }
